@@ -3,9 +3,8 @@ from rest_framework import generics
 from deals.serializers import *
 from deals.models import Deal
 from deals.forms import UploadFileForm
-from django.http import HttpResponseRedirect
 from deals.handles import handle_uploaded_file
-from django.db.models import Sum, Count
+from django.db.models import Sum
 
 
 class DealCreateView(generics.CreateAPIView):
@@ -50,8 +49,8 @@ def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request)
-            return HttpResponseRedirect('all')
+            return handle_uploaded_file(request)
+            # return HttpResponseRedirect('all')
     else:
         form = UploadFileForm()
 

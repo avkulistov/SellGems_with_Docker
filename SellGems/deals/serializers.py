@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from deals.models import Deal
-from django.db.models import Sum
 
 
 class DealCreateSerializer(serializers.ModelSerializer):
